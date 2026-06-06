@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>EduSana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --ink:    #0c0c0c;
+  --ink-2:  #2a2a2a;
+  --ink-3:  #525252;
+  --ink-4:  #8a8a8a;
+  --ink-5:  #b8b8b8;
+  --border: #e2e2e2;
+  --bg:     #ffffff;
+  --bg-2:   #f8f8f7;
+  --bg-3:   #f2f2f0;
+  --blue:   #2563eb;
+  --blue-bg:#eff4ff;
+  --blue-b: #c7d9fc;
+  --font:   'Inter', -apple-system, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.55; }
+a { color: inherit; text-decoration: none; }
+
+/* ─── NAV ─── */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  height: 54px; display: flex; align-items: center;
+  padding: 0 40px;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+}
+.nav-w { max-width: 1100px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.logo { font-size: 15px; font-weight: 700; letter-spacing: -0.4px; }
+.logo em { font-style: normal; color: var(--blue); }
+.nav-r { display: flex; align-items: center; gap: 2px; }
+.nav-r a { font-size: 13.5px; color: var(--ink-3); padding: 6px 11px; border-radius: 6px; font-weight: 450; transition: all .12s; }
+.nav-r a:hover { color: var(--ink); background: var(--bg-2); }
+.nav-r .cta { background: var(--ink); color: #fff; font-weight: 580; margin-left: 6px; }
+.nav-r .cta:hover { background: var(--ink-2); }
+
+/* ─── HERO ─── */
+.hero { padding: 104px 40px 92px; text-align: center; }
+.hero-w { max-width: 720px; margin: 0 auto; }
+.pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 11.5px; font-weight: 600; letter-spacing: .3px;
+  color: var(--blue); background: var(--blue-bg);
+  border: 1px solid var(--blue-b);
+  padding: 4px 12px; border-radius: 20px;
+  margin-bottom: 32px;
+}
+.pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+h1 {
+  font-size: clamp(36px, 5vw, 54px);
+  font-weight: 800; letter-spacing: -2.5px;
+  line-height: 1.07; color: var(--ink);
+  margin-bottom: 10px;
+}
+.hero-sub-label {
+  font-size: 13.5px; color: var(--ink-4);
+  letter-spacing: .1px; margin-bottom: 22px;
+}
+.hero-body {
+  font-size: 17px; color: var(--ink-3);
+  line-height: 1.72; max-width: 520px;
+  margin: 0 auto 40px; font-weight: 400;
+}
+.hero-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center;
+  font-size: 14px; font-weight: 580;
+  padding: 10px 20px; border-radius: 8px;
+  border: 1px solid transparent; cursor: pointer;
+  transition: all .13s; letter-spacing: -.1px;
+}
+.btn-primary { background: var(--ink); color: #fff; border-color: var(--ink); }
+.btn-primary:hover { background: #1a1a1a; }
+.btn-outline { background: transparent; color: var(--ink-2); border-color: var(--border); }
+.btn-outline:hover { border-color: #aaa; color: var(--ink); }
+.hero-note { margin-top: 16px; font-size: 12.5px; color: var(--ink-5); }
+
+/* ─── TRUST STRIP ─── */
+.strip {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
+  padding: 0 40px;
+}
+.strip-w { max-width: 1100px; margin: 0 auto; display: flex; }
+.strip-cell {
+  flex: 1; padding: 22px 20px;
+  border-right: 1px solid var(--border);
+}
+.strip-cell:last-child { border-right: none; }
+.strip-val { font-size: 14px; font-weight: 680; color: var(--ink); letter-spacing: -.2px; margin-bottom: 3px; }
+.strip-desc { font-size: 12.5px; color: var(--ink-4); line-height: 1.5; }
+
+/* ─── SECTION SHELL ─── */
+.sec { padding: 96px 40px; }
+.sec-w { max-width: 1100px; margin: 0 auto; }
+.lbl { font-size: 11px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; color: var(--ink-4); margin-bottom: 14px; }
+h2 { font-size: clamp(26px, 3.2vw, 40px); font-weight: 780; letter-spacing: -1.6px; line-height: 1.13; color: var(--ink); margin-bottom: 14px; }
+.sec-sub { font-size: 15.5px; color: var(--ink-3); line-height: 1.7; max-width: 500px; margin-bottom: 52px; }
+.divider { border: none; border-top: 1px solid var(--border); max-width: 1100px; margin: 0 auto; }
+
+/* ─── PROBLEM GRID ─── */
+.prob-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+}
+.prob-cell {
+  padding: 32px 28px;
+  border-right: 1px solid var(--border);
+}
+.prob-cell:last-child { border-right: none; }
+.prob-n { font-size: 11px; font-weight: 700; color: var(--ink-5); letter-spacing: .8px; margin-bottom: 16px; }
+.prob-cell h3 { font-size: 15px; font-weight: 660; letter-spacing: -.3px; margin-bottom: 9px; }
+.prob-cell p { font-size: 13.5px; color: var(--ink-3); line-height: 1.65; }
+
+/* ─── PRODUCT ─── */
+.prod-bg { background: var(--bg-2); }
+.prod-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+
+.feat { border-top: 1px solid var(--border); }
+.feat-row {
+  padding: 16px 0; border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.feat-hd { display: flex; align-items: center; gap: 12px; }
+.feat-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--border); flex-shrink: 0;
+  transition: background .15s;
+}
+.feat-row.on .feat-dot { background: var(--blue); }
+.feat-row h4 { font-size: 14px; font-weight: 580; color: var(--ink-3); transition: color .15s; }
+.feat-row.on h4 { color: var(--ink); font-weight: 640; }
+.feat-body {
+  font-size: 13.5px; color: var(--ink-3); line-height: 1.65;
+  max-height: 0; overflow: hidden;
+  padding-left: 19px;
+  transition: max-height .22s ease, padding .22s;
+}
+.feat-row.on .feat-body { max-height: 72px; padding-top: 8px; }
+
+.callout {
+  margin-top: 28px; padding: 18px 20px;
+  background: var(--blue-bg); border: 1px solid var(--blue-b);
+  border-radius: 10px;
+}
+.callout-label { font-size: 11px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+.callout p { font-size: 13.5px; color: #1e3a8a; line-height: 1.62; }
+
+/* mock UI */
+.mock {
+  border: 1px solid var(--border); border-radius: 12px;
+  overflow: hidden; background: var(--bg);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+}
+.mock-bar {
+  padding: 11px 15px; background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 6px;
+}
+.d { width: 9px; height: 9px; border-radius: 50%; }
+.mock-bar span { font-size: 12px; color: var(--ink-4); margin-left: 8px; }
+.mock-body { padding: 18px; }
+.mock-heading { font-size: 10.5px; font-weight: 700; color: var(--ink-4); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 12px; }
+.mock-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 12px; margin-bottom: 6px;
+  border: 1px solid var(--border); border-radius: 7px;
+  font-size: 13px;
+}
+.mock-row.hi { background: var(--blue-bg); border-color: var(--blue-b); }
+.rn { font-weight: 580; }
+.rm { font-size: 11.5px; color: var(--ink-4); margin-top: 2px; }
+.tag { font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 5px; }
+.tg { background: #dcfce7; color: #166534; }
+.ty { background: #fef9c3; color: #854d0e; }
+.tb { background: #dbeafe; color: #1d4ed8; }
+.tn { background: var(--bg-3); color: var(--ink-3); }
+.mock-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; margin-top: 10px; }
+.ms { padding: 9px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 7px; text-align: center; }
+.ms-n { font-size: 18px; font-weight: 720; letter-spacing: -.6px; }
+.ms-l { font-size: 10.5px; color: var(--ink-4); margin-top: 2px; }
+
+/* ─── MATCHING ─── */
+.match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.match-copy p { font-size: 15.5px; color: var(--ink-3); line-height: 1.72; margin-bottom: 16px; }
+.match-note {
+  margin-top: 24px; font-size: 13px; color: var(--ink-4);
+  border-left: 2px solid var(--border);
+  padding-left: 14px; line-height: 1.65;
+}
+.match-card {
+  border: 1px solid var(--border); border-radius: 12px;
+  overflow: hidden; background: var(--bg-2);
+}
+.match-hd {
+  padding: 13px 18px; border-bottom: 1px solid var(--border);
+  font-size: 11.5px; font-weight: 700; color: var(--ink-4);
+  text-transform: uppercase; letter-spacing: .8px;
+}
+.match-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 18px; border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.match-row:last-child { border-bottom: none; }
+.match-school { font-size: 13.5px; font-weight: 600; }
+.match-detail { font-size: 12px; color: var(--ink-4); margin-top: 3px; }
+.match-pct { font-size: 14.5px; font-weight: 720; color: var(--blue); }
+
+/* ─── COMPANY ─── */
+.company-bg { background: var(--bg-2); }
+.company-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.pullquote {
+  font-size: clamp(19px, 2.2vw, 25px);
+  font-weight: 700; letter-spacing: -.8px;
+  line-height: 1.42; color: var(--ink);
+  margin-bottom: 26px;
+}
+.company-body { font-size: 15px; color: var(--ink-3); line-height: 1.75; margin-bottom: 14px; }
+.f-cards { display: flex; flex-direction: column; gap: 12px; }
+.f-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 10px; padding: 22px 22px;
+}
+.f-name { font-size: 14px; font-weight: 660; margin-bottom: 3px; }
+.f-role { font-size: 12px; color: var(--ink-4); margin-bottom: 11px; }
+.f-text { font-size: 13.5px; color: var(--ink-3); line-height: 1.65; }
+
+/* ─── TRACTION ─── */
+.traction { background: #0a0a0a; padding: 96px 40px; }
+.traction .lbl { color: #5a8dee; }
+.traction h2 { color: #fff; margin-bottom: 12px; }
+.traction .sec-sub { color: rgba(255,255,255,.38); margin-bottom: 52px; }
+.tr-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px; overflow: hidden;
+}
+.tr-cell {
+  padding: 32px 26px;
+  border-right: 1px solid rgba(255,255,255,.07);
+}
+.tr-cell:last-child { border-right: none; }
+.tr-n {
+  font-size: 36px; font-weight: 800;
+  letter-spacing: -1.5px; color: #fff;
+  line-height: 1; margin-bottom: 10px;
+}
+.tr-n sup { font-size: 15px; vertical-align: super; font-weight: 700; }
+.tr-d { font-size: 13px; color: rgba(255,255,255,.38); line-height: 1.6; }
+
+/* ─── CTA ─── */
+.cta { padding: 112px 40px; text-align: center; }
+.cta-w { max-width: 540px; margin: 0 auto; }
+.cta h2 { font-size: clamp(28px, 3.5vw, 42px); margin-bottom: 16px; }
+.cta p { font-size: 16px; color: var(--ink-3); line-height: 1.7; margin-bottom: 40px; }
+.cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 14px; }
+.cta-note { font-size: 12.5px; color: var(--ink-5); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--bg-2); border-top: 1px solid var(--border);
+  padding: 52px 40px 40px;
+}
+.footer-w { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 48px; }
+.f-brand .f-logo { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.f-brand .f-logo em { font-style: normal; color: var(--blue); }
+.f-brand p { font-size: 13px; color: var(--ink-4); line-height: 1.6; max-width: 200px; }
+.f-cols { display: flex; gap: 52px; flex-wrap: wrap; }
+.f-col h5 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--ink-4); margin-bottom: 14px; }
+.f-col a { display: block; font-size: 13.5px; color: var(--ink-3); margin-bottom: 9px; transition: color .12s; }
+.f-col a:hover { color: var(--ink); }
+.footer-btm {
+  max-width: 1100px; margin: 36px auto 0;
+  padding-top: 24px; border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  font-size: 12px; color: var(--ink-4);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 780px) {
+  nav { padding: 0 20px; }
+  .nav-r a:not(.cta) { display: none; }
+  .sec, .traction, .hero, .cta { padding-left: 20px; padding-right: 20px; }
+  .strip { padding: 0 20px; }
+  .strip-w, .prod-grid, .match-grid, .company-grid { flex-direction: column; }
+  .prod-grid, .match-grid, .company-grid { grid-template-columns: 1fr; gap: 40px; }
+  .prob-grid, .tr-grid { grid-template-columns: 1fr; }
+  .strip-w { flex-direction: column; }
+  .strip-cell { border-right: none; border-bottom: 1px solid var(--border); padding: 18px 0; }
+  .strip-cell:last-child { border-bottom: none; }
+  .prob-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .prob-cell:last-child { border-bottom: none; }
+  .tr-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
+  .tr-cell:last-child { border-bottom: none; }
+  footer { padding: 40px 20px; }
+  .footer-w { flex-direction: column; gap: 36px; }
+  .footer-btm { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-w">
+    <div class="logo">Edu<em>Sana</em></div>
+    <div class="nav-r">
+      <a href="#product">Product</a>
+      <a href="#leads">Leads</a>
+      <a href="#company">Company</a>
+      <a href="#cta" class="cta btn">Request access</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-w">
+    <div class="pill"><span class="pill-dot"></span>Now onboarding pilot customers</div>
+    <h1>Get qualified leads.<br/>Run your school<br/>in one system.</h1>
+    <p class="hero-sub-label">No spreadsheets. No missed students. No fragmented tools.</p>
+    <p class="hero-body">EduSana is a CRM and operations platform for language schools, exam prep centers, and study abroad agencies. Manage students, sales, and operations — and receive matched student leads directly.</p>
+    <div class="hero-btns">
+      <a href="#cta" class="btn btn-primary" onclick="openWA(event)">Request access</a>
+      <a href="#product" class="btn btn-outline">See how it works</a>
+    </div>
+    <p class="hero-note">Used by education businesses in production.</p>
+  </div>
+</div>
+
+<!-- TRUST STRIP -->
+<div class="strip">
+  <div class="strip-w">
+    <div class="strip-cell">
+      <div class="strip-val">Built with real operators</div>
+      <div class="strip-desc">5+ years inside language schools and study abroad agencies</div>
+    </div>
+    <div class="strip-cell">
+      <div class="strip-val">6 months in production</div>
+      <div class="strip-desc">Deployed at a multi-branch education company in Kazakhstan</div>
+    </div>
+    <div class="strip-cell">
+      <div class="strip-val">Language schools · Exam prep · Study abroad</div>
+      <div class="strip-desc">Built for all three verticals</div>
+    </div>
+    <div class="strip-cell">
+      <div class="strip-val">Pilot onboarding open</div>
+      <div class="strip-desc">Rebuilt from scratch for scale — accepting customers now</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="sec">
+  <div class="sec-w">
+    <div class="lbl">Problem</div>
+    <h2>Education businesses are losing revenue in three ways.</h2>
+    <p class="sec-sub">Most teams already feel this — but work around it instead of fixing it.</p>
+    <div class="prob-grid">
+      <div class="prob-cell">
+        <div class="prob-n">01</div>
+        <h3>Low student lifetime value</h3>
+        <p>No structured follow-up, re-enrollment, or upsell system. Students disappear after their course ends.</p>
+      </div>
+      <div class="prob-cell">
+        <div class="prob-n">02</div>
+        <h3>Expensive lead acquisition</h3>
+        <p>Growth depends on ads and referrals. Every new student costs time and money to find and convert.</p>
+      </div>
+      <div class="prob-cell">
+        <div class="prob-n">03</div>
+        <h3>Fragmented operations</h3>
+        <p>CRM, schedules, payments, and communication live in separate tools. Nothing connects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PRODUCT -->
+<section class="sec prod-bg" id="product">
+  <div class="sec-w">
+    <div class="lbl">Product</div>
+    <h2>One system for your entire student pipeline.</h2>
+    <p class="sec-sub">EduSana combines CRM, operations, and lead generation in one platform.</p>
+    <div class="prod-grid">
+      <div>
+        <div class="feat">
+          <div class="feat-row on">
+            <div class="feat-hd"><div class="feat-dot"></div><h4>Student CRM</h4></div>
+            <div class="feat-body">Full lifecycle from first inquiry to graduation. All documents, messages, and payments in one record.</div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-hd"><div class="feat-dot"></div><h4>Sales pipeline</h4></div>
+            <div class="feat-body">Track, convert, and follow up with students systematically. No more lost leads in WhatsApp threads.</div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-hd"><div class="feat-dot"></div><h4>Scheduling and operations</h4></div>
+            <div class="feat-body">Classes, groups, attendance, and workflows — all in one view.</div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-hd"><div class="feat-dot"></div><h4>Payments and reporting</h4></div>
+            <div class="feat-body">Revenue visibility and operational analytics without switching tools.</div>
+          </div>
+        </div>
+        <div class="callout">
+          <div class="callout-label">Coming next</div>
+          <p>Schools in the network receive qualified student leads automatically based on program fit. No cold outreach. No ads dependency.</p>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="mock-bar">
+          <div class="d" style="background:#ff5f57"></div>
+          <div class="d" style="background:#ffbd2e"></div>
+          <div class="d" style="background:#28c840"></div>
+          <span>Students · Q2 2024</span>
+        </div>
+        <div class="mock-body">
+          <div class="mock-heading">Active · 48 students</div>
+          <div class="mock-row hi">
+            <div><div class="rn">Asel Nurova</div><div class="rm">IELTS Prep · started Mar 4</div></div>
+            <span class="tag tg">Enrolled</span>
+          </div>
+          <div class="mock-row">
+            <div><div class="rn">Daniyar Bekkov</div><div class="rm">Business English · Feb 18</div></div>
+            <span class="tag ty">Payment due</span>
+          </div>
+          <div class="mock-row">
+            <div><div class="rn">Mira Seitkali</div><div class="rm">General English · Apr 1</div></div>
+            <span class="tag tb">In progress</span>
+          </div>
+          <div class="mock-row">
+            <div><div class="rn">Temirlan Asanov</div><div class="rm">Inquiry · Apr 9</div></div>
+            <span class="tag tn">New lead</span>
+          </div>
+          <div class="mock-stats">
+            <div class="ms"><div class="ms-n">48</div><div class="ms-l">Active</div></div>
+            <div class="ms"><div class="ms-n">6</div><div class="ms-l">This week</div></div>
+            <div class="ms"><div class="ms-n">94%</div><div class="ms-l">Retention</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- LEADS -->
+<section class="sec" id="leads">
+  <div class="sec-w">
+    <div class="match-grid">
+      <div class="match-copy">
+        <div class="lbl">Qualified leads</div>
+        <h2>Students come already matched to your programs.</h2>
+        <p>Students upload their academic profile — grades, test scores, language level, and target country. EduSana matches them to programs they are actually eligible for.</p>
+        <p>Each match becomes a warm, high-intent lead for education providers in the network.</p>
+        <div class="match-note">
+          This system was originally built by one of the founders to solve a personal problem: there was no reliable way to know which international programs were actually accessible. That prototype became the matching engine behind EduSana.
+        </div>
+      </div>
+      <div class="match-card">
+        <div class="match-hd">Matched programs · Asel N.</div>
+        <div class="match-row">
+          <div>
+            <div class="match-school">EF Language School — Dublin</div>
+            <div class="match-detail">IELTS 6.5 · B2 level · Sept intake</div>
+          </div>
+          <div class="match-pct">97%</div>
+        </div>
+        <div class="match-row">
+          <div>
+            <div class="match-school">IH Toronto — General English</div>
+            <div class="match-detail">B2 English · Open intake</div>
+          </div>
+          <div class="match-pct">91%</div>
+        </div>
+        <div class="match-row">
+          <div>
+            <div class="match-school">Kaplan International — London</div>
+            <div class="match-detail">B1–B2 · IELTS 6.0+ · Jan intake</div>
+          </div>
+          <div class="match-pct">85%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- COMPANY -->
+<section class="sec company-bg" id="company">
+  <div class="sec-w">
+    <div class="company-grid">
+      <div>
+        <div class="lbl">Company</div>
+        <div class="pullquote">Built by people who lived the problem.</div>
+        <p class="company-body">One founder experienced international education directly and built a system to understand program eligibility after being rejected and misinformed by agencies.</p>
+        <p class="company-body">The other spent 5 years inside language schools and study abroad agencies, operating and scaling them while experiencing firsthand how fragmented their systems are.</p>
+        <p class="company-body">EduSana is the product both founders needed — but didn't have.</p>
+      </div>
+      <div class="f-cards">
+        <div class="f-card">
+          <div class="f-name">Co-founder — Product</div>
+          <div class="f-role">Former international student</div>
+          <div class="f-text">Built the first version of the matching system to understand program eligibility independently. That system evolved into EduSana.</div>
+        </div>
+        <div class="f-card">
+          <div class="f-name">Co-founder — Operations</div>
+          <div class="f-role">5 years in language schools and study abroad agencies</div>
+          <div class="f-text">Built and scaled multi-branch operations. Deep understanding of sales, workflows, and where revenue gets lost.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACTION -->
+<section class="traction">
+  <div class="sec-w">
+    <div class="lbl">Traction</div>
+    <h2>Real usage in production.</h2>
+    <p class="sec-sub">The first version of EduSana ran for 6 months in a multi-branch education company in Kazakhstan.</p>
+    <div class="tr-grid">
+      <div class="tr-cell">
+        <div class="tr-n">6<sup>mo</sup></div>
+        <div class="tr-d">Live deployment at a multi-branch education company</div>
+      </div>
+      <div class="tr-cell">
+        <div class="tr-n">Real</div>
+        <div class="tr-d">Operational usage across multiple branches — not a demo</div>
+      </div>
+      <div class="tr-cell">
+        <div class="tr-n">v2</div>
+        <div class="tr-d">Fully rebuilt for scale, informed by six months of production learnings</div>
+      </div>
+      <div class="tr-cell">
+        <div class="tr-n">Now</div>
+        <div class="tr-d">Onboarding pilot customers. If you run an education business, we'd like to talk.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="cta">
+  <div class="cta-w">
+    <div class="lbl" style="text-align:center">Get started</div>
+    <h2>We're onboarding pilot customers.</h2>
+    <p>If you run an education business, we'd like to talk. Tell us about your school and we'll get back to you within 24 hours.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn btn-primary" onclick="openWA(event)">Request access</a>
+      <a href="mailto:aliyasha7@gmail.com" class="btn btn-outline">aliyasha7@gmail.com</a>
+    </div>
+    <p class="cta-note">No sales call required to start.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-w">
+    <div class="f-brand">
+      <div class="f-logo">Edu<em>Sana</em></div>
+      <p>CRM and operations for education businesses.</p>
+    </div>
+    <div class="f-cols">
+      <div class="f-col">
+        <h5>Product</h5>
+        <a href="#product">CRM</a>
+        <a href="#product">Sales pipeline</a>
+        <a href="#product">Scheduling</a>
+        <a href="#leads">Program matching</a>
+      </div>
+      <div class="f-col">
+        <h5>Company</h5>
+        <a href="#company">About</a>
+        <a href="mailto:aliyasha7@gmail.com">Contact</a>
+      </div>
+      <div class="f-col">
+        <h5>Legal</h5>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-btm">
+    <span>© 2024 EduSana</span>
+    <span>aliyasha7@gmail.com</span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.feat-row').forEach(r => {
+    r.addEventListener('click', () => {
+      document.querySelectorAll('.feat-row').forEach(x => x.classList.remove('on'));
+      r.classList.add('on');
+    });
+  });
+  function openWA(e) {
+    e.preventDefault();
+    window.open('https://wa.me/77473161633?text=Hi%2C%20I%27d%20like%20to%20request%20access%20to%20EduSana.', '_blank');
+  }
+</script>
+</body>
+</html>
